@@ -15,18 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function(){
-	return view('welcome');
-})->name('login');
-
-Route::get('/register', function(){
-	return view('welcome');
-})->name('register');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/gallery/{catagory}', 'ArtController@gallery')->name('gallery');
 
+Route::get('/picture/{id}', 'ArtController@picture')->name('picture');
+
+Route::get('/addPicture', 'ArtController@addPicture')->name('addPicture');
+
 Route::post('/add', 'ArtController@add')->name('add');
+
+Route::get('/like/{id}', 'LikesController@like')->name('like');
+
+Route::get('/dislike/{id}', 'LikesController@dislike')->name('dislike');
+
+Route::post('/search', 'ArtController@search')->name('search');
+
+Route::post('/searchPage', 'ArtController@searchPage')->name('searchPage');
